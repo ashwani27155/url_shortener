@@ -1,7 +1,7 @@
 const Url = require("../modals/url.modals");
 const shortid = require("shortid");
 const moment = require("moment");
-// API for shorten URL
+// controller for shorten URL
 exports.urlShort = async (req, res) => {
 	try {
 		if (!req.body.originalUrl) {
@@ -19,10 +19,13 @@ exports.urlShort = async (req, res) => {
 		});
 	} catch (error) {
 		console.log("Error:", error);
+		res.status(500).send({
+			message: "Some thing went wrong",
+		});
 	}
 };
 
-// API for redirect to the original URL
+// controller for redirect to the original URL
 exports.getUrl = async (req, res) => {
 	try {
 		const { shortID } = req.params;
@@ -39,10 +42,13 @@ exports.getUrl = async (req, res) => {
 		}
 	} catch (error) {
 		console.log("Error:", error);
+		res.status(500).send({
+			message: "Some thing went wrong",
+		});
 	}
 };
 
-// API for getting the clicked url analytics
+// controller for getting the clicked url analytics
 exports.getClickedAnalytics = async (req, res) => {
 	try {
 		const { shortID } = req.params;
@@ -55,5 +61,8 @@ exports.getClickedAnalytics = async (req, res) => {
 		}
 	} catch (error) {
 		console.log("Error:", error);
+		res.status(500).send({
+			message: "Some thing went wrong",
+		});
 	}
 };

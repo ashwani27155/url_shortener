@@ -1,3 +1,4 @@
+/** This file store the schema for the URL resource */
 const mongoose = require("mongoose");
 
 const urlSchema = new mongoose.Schema(

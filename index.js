@@ -15,6 +15,7 @@ mongoose
 		console.log("Error while connecting to database:", error);
 	});
 require("./routes/url.routes")(app);
+require("./routes/user.routes")(app);
 // Listen to specific port
 app.listen(serverConfig.PORT, () => {
 	console.log(`Server is running on port: ${serverConfig.PORT}`);
