@@ -19,3 +19,21 @@ exports.urlShort = async (req, res) => {
 		console.log("Error:", error);
 	}
 };
+
+// API for redirect to the original URL
+exports.getUrl = async (req, res) => {
+	try {
+		const { shortID } = req.params;
+		const url = await Url.findOne({ shortID: shortID });
+
+		if (url) {
+			url.clicked.push({ clickedTime: new Date() });
+			await url.save();
+			res.redirect(url.originalUrl);
+		} else {
+			res.status(404).json({ Error: "URL not found" });
+		}
+	} catch (error) {
+		console.log("Error:", error);
+	}
+};
