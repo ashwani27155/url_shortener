@@ -37,3 +37,20 @@ exports.getUrl = async (req, res) => {
 		console.log("Error:", error);
 	}
 };
+
+
+// API for getting the clicked url analytics
+exports.getClickedAnalytics = async (req, res) => {
+	try {
+		const { shortID } = req.params;
+		const url = await Url.findOne({ shortID: shortID });
+
+		if (url) {
+			res.status(200).send({ shortId: url.shortID, count: url.clicked.length });
+		} else {
+			res.status(404).json({ Error: "URL not found" });
+		}
+	} catch (error) {
+		console.log("Error:", error);
+	}
+};
