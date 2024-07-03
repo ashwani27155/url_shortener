@@ -1,5 +1,6 @@
 const Url = require("../modals/url.modals");
 const shortid = require("shortid");
+const moment = require("moment");
 // API for shorten URL
 exports.urlShort = async (req, res) => {
 	try {
@@ -10,6 +11,7 @@ exports.urlShort = async (req, res) => {
 		const shortUrlObject = {
 			originalUrl: req.body.originalUrl,
 			shortID: shortId,
+			expiresIn: moment().add(15, "days").toDate(),
 		};
 		const url = await Url.create(shortUrlObject);
 		res.status(200).send({
@@ -25,9 +27,11 @@ exports.getUrl = async (req, res) => {
 	try {
 		const { shortID } = req.params;
 		const url = await Url.findOne({ shortID: shortID });
-
 		if (url) {
-			url.clicked.push({ clickedTime: new Date() });
+			if (url.expiresIn && moment().isAfter(url.expiresIn)) {
+				return res.status(410).send({ error: "URL has expired" });
+			}
+			url.clicked.push({ clickedTime: moment().toDate() });
 			await url.save();
 			res.redirect(url.originalUrl);
 		} else {
@@ -37,7 +41,6 @@ exports.getUrl = async (req, res) => {
 		console.log("Error:", error);
 	}
 };
-
 
 // API for getting the clicked url analytics
 exports.getClickedAnalytics = async (req, res) => {

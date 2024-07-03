@@ -19,6 +19,9 @@ const urlSchema = new mongoose.Schema(
 				},
 			},
 		],
+		expiresIn: {
+			type: Date,
+		},
 	},
 	{ timestamps: true }
 );
