@@ -7,6 +7,7 @@ exports.urlShort = async (req, res) => {
 		if (!req.body.originalUrl) {
 			return res.status(400).send({ Error: "url not found" });
 		}
+		// generate short if by using shortid module
 		const shortId = shortid.generate();
 		const shortUrlObject = {
 			originalUrl: req.body.originalUrl,
@@ -31,17 +32,19 @@ exports.getUrl = async (req, res) => {
 		const { shortID } = req.params;
 		const url = await Url.findOne({ shortID: shortID });
 		if (url) {
+			//check if link is expired
 			if (url.expiresIn && moment().isAfter(url.expiresIn)) {
 				return res.status(410).send({ error: "URL has expired" });
 			}
+			// push currect date when link is clicked
 			url.clicked.push({ clickedTime: moment().toDate() });
 			await url.save();
+			//Redirect to the origin link
 			res.redirect(url.originalUrl);
 		} else {
 			res.status(404).json({ Error: "URL not found" });
 		}
 	} catch (error) {
-		console.log("Error:", error);
 		res.status(500).send({
 			message: "Some thing went wrong",
 		});
@@ -51,6 +54,7 @@ exports.getUrl = async (req, res) => {
 // controller for getting the clicked url analytics
 exports.getClickedAnalytics = async (req, res) => {
 	try {
+		// Destructure shortID from params
 		const { shortID } = req.params;
 		const url = await Url.findOne({ shortID: shortID });
 
@@ -60,7 +64,6 @@ exports.getClickedAnalytics = async (req, res) => {
 			res.status(404).json({ Error: "URL not found" });
 		}
 	} catch (error) {
-		console.log("Error:", error);
 		res.status(500).send({
 			message: "Some thing went wrong",
 		});

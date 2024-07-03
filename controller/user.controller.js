@@ -4,16 +4,17 @@ const User = require("../modals/user.model");
 //controller for user signup
 exports.signup = async (req, res) => {
 	try {
+		// User object which is stored in database
 		const userObjToBeStoredInDB = {
 			name: req.body.name,
 			email: req.body.email,
+			// create hash of the password then store it in database
 			password: bcrypt.hashSync(req.body.password, 8),
 		};
 		const userCreated = await User.create(userObjToBeStoredInDB);
 
 		res.status(201).send({ message: "User registered successfully" });
 	} catch (err) {
-		console.log("Error while creating new user", err.message);
 		res.status(500).send({
 			message: "Some thing went wrong",
 		});
@@ -51,7 +52,6 @@ exports.signin = async (req, res) => {
 			accessToken: token,
 		});
 	} catch (err) {
-		console.log("error==", err.message);
 		res.status(500).send({
 			message: "Some thing went wrong",
 		});
