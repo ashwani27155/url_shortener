@@ -19,8 +19,9 @@ exports.signup = async (req, res) => {
 		};
 		const userCreated = await User.create(userObjToBeStoredInDB);
 
-		res.status(201).send({ message: "User registered successfully" });
+		res.status(200).send({ message: "User registered successfully" });
 	} catch (err) {
+		console.log(err);
 		res.status(500).send({
 			message: "Some thing went wrong",
 		});
@@ -56,6 +57,7 @@ exports.signin = async (req, res) => {
 		res.status(200).send({
 			id: user._id,
 			accessToken: token,
+			message: "Login Success",
 		});
 	} catch (err) {
 		res.status(500).send({

@@ -7,9 +7,10 @@ exports.urlShort = async (req, res) => {
 		if (!req.body.originalUrl) {
 			return res.status(400).send({ Error: "URL not found" });
 		}
-		const url_regex =
+		// Regex for validate URL
+		const urlRegex =
 			/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
-		const checkURL = url_regex.test(req.body.originalUrl);
+		const checkURL = urlRegex.test(req.body.originalUrl);
 		if (checkURL == false) {
 			return res.status(400).send({ Error: "Please Enter a valid URL" });
 		}

@@ -7,7 +7,7 @@ const dbConfig = require("./config/db.config");
 const app = express();
 app.use(bodyParser.json());
 //use cors middleware
-app.use(cors());
+app.use(cors({ origin: "*" }));
 // Database connection
 mongoose
 	.connect(dbConfig.DB_URL)
