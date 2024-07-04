@@ -9,8 +9,7 @@ module.exports = (app) => {
 	);
 	//Routes for redirect to the origin URL
 	app.get(
-		"/api/v1/url/:shortID",
-		[middleware.verifyToken],
+		"/:shortID",
 		urlController.getUrl
 	);
 	//Routes for Get the clicked link Analytics
