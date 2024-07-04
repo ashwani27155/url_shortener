@@ -6,6 +6,7 @@ const serverConfig = require("./config/server.config");
 const dbConfig = require("./config/db.config");
 const app = express();
 app.use(bodyParser.json());
+//use cors middleware
 app.use(cors());
 // Database connection
 mongoose

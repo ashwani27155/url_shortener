@@ -4,6 +4,12 @@ const User = require("../modals/user.model");
 //controller for user signup
 exports.signup = async (req, res) => {
 	try {
+		var user = await User.findOne({ email: req.body.email });
+		if (user) {
+			return res.status(400).send({
+				message: "User Already exist",
+			});
+		}
 		// User object which is stored in database
 		const userObjToBeStoredInDB = {
 			name: req.body.name,
@@ -27,7 +33,7 @@ exports.signin = async (req, res) => {
 		var user = await User.findOne({ email: req.body.email });
 		if (user == null) {
 			return res.status(400).send({
-				message: "Failed! User id doesn't exist",
+				message: "Failed! User doesn't exist",
 			});
 		}
 
