@@ -4,10 +4,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const serverConfig = require("./config/server.config");
 const dbConfig = require("./config/db.config");
+const swagger = require("./config/swagger.config");
 const app = express();
 app.use(bodyParser.json());
 //use cors middleware
 app.use(cors({ origin: "*" }));
+swagger(app);
 // Database connection
 mongoose
 	.connect(dbConfig.DB_URL)

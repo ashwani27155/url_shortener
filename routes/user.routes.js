@@ -4,4 +4,128 @@ module.exports = (app) => {
 	app.post("/api/v1/auth/signup", userController.signup);
 	//Routes for login user
 	app.post("/api/v1/auth/signin", userController.signin);
+
+	//Swagger Docs for signup and signin API
+	/**
+	 * @swagger
+	 * /api/v1/auth/signup:
+	 *   post:
+	 *     summary: User signup
+	 *     description: Register a new user with name, email, and password.
+	 *     requestBody:
+	 *       required: true
+	 *       content:
+	 *         application/json:
+	 *           schema:
+	 *             type: object
+	 *             properties:
+	 *               name:
+	 *                 type: string
+	 *                 example: John Doe
+	 *               email:
+	 *                 type: string
+	 *                 example: johndoe@example.com
+	 *               password:
+	 *                 type: string
+	 *                 example: Password123
+	 *     responses:
+	 *       200:
+	 *         description: User registered successfully
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: User registered successfully
+	 *       400:
+	 *         description: User already exists
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: User Already exist
+	 *       500:
+	 *         description: Internal server error
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: Some thing went wrong
+	 */
+
+	/**
+	 * @swagger
+	 * /api/v1/auth/signin:
+	 *   post:
+	 *     summary: User login
+	 *     description: Authenticate a user with email and password.
+	 *     requestBody:
+	 *       required: true
+	 *       content:
+	 *         application/json:
+	 *           schema:
+	 *             type: object
+	 *             properties:
+	 *               email:
+	 *                 type: string
+	 *                 example: johndoe@example.com
+	 *               password:
+	 *                 type: string
+	 *                 example: Password123
+	 *     responses:
+	 *       200:
+	 *         description: Login Success
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 id:
+	 *                   type: string
+	 *                   example: 60b6c2f8f8c8c40015e4c6bc
+	 *                 accessToken:
+	 *                   type: string
+	 *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+	 *                 message:
+	 *                   type: string
+	 *                   example: Login Success
+	 *       400:
+	 *         description: Failed! User doesn't exist
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: Failed! User doesn't exist
+	 *       401:
+	 *         description: Invalid Password
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: Invalid Password
+	 *       500:
+	 *         description: Internal server error
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               type: object
+	 *               properties:
+	 *                 message:
+	 *                   type: string
+	 *                   example: Some thing went wrong
+	 */
 };
