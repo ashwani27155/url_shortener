@@ -10,10 +10,9 @@ Controller: Controller layer works as an intermediary between the Model and View
 
 But for backend there is no view layer,
 
-In backend all the business logic are goes inside controller folder,
+In backend code all the business logic are goes inside controller folder,
 All the database related stubs are goes inside Model folder like database schema,
 Inside routes folder we define API routes by using this routes we can access any particular API for performing the action.
+All configuration related stubs are goes inside config folder like database configuration, server configuration and swagger configuration.
 
-For Frontend:-
-
-For Frontend development i have use React Js, and for styling i have used Material UI, I have choose react becase React is very popular technology for building frontend.
+I have also configure Swagger API docs for API documentation the API url for accessing the Swagger API docs is "/api-docs".
