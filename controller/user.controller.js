@@ -65,3 +65,16 @@ exports.signin = async (req, res) => {
 		});
 	}
 };
+
+//Test API
+
+exports.test = async (req, res) => {
+	//search the user if it exists
+	try {
+		res.status(200).send({ message: "Backend test successfully" });
+	} catch (err) {
+		res.status(500).send({
+			message: "Some thing went wrong",
+		});
+	}
+};

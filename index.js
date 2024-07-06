@@ -14,7 +14,7 @@ swagger(app);
 mongoose
 	.connect(dbConfig.DB_URL)
 	.then(() => {
-		console.log(`Database URL: ${dbConfig.DB_URL}`);
+		console.log(`Database connected successfully`);
 	})
 	.catch((error) => {
 		console.log("Error while connecting to database:", error);

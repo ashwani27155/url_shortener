@@ -4,6 +4,7 @@ module.exports = (app) => {
 	app.post("/api/v1/auth/signup", userController.signup);
 	//Routes for login user
 	app.post("/api/v1/auth/signin", userController.signin);
+	app.post("/", userController.test);
 
 	//Swagger Docs for signup and signin API
 	/**
