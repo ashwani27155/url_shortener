@@ -36,7 +36,7 @@ module.exports = (app) => {
 	 *             properties:
 	 *               originalUrl:
 	 *                 type: string
-	 *                 example: https://www.example.com
+	 *                 example: https://www.google.com
 	 *     responses:
 	 *       '200':
 	 *         description: Successfully shortened the URL
@@ -47,7 +47,7 @@ module.exports = (app) => {
 	 *               properties:
 	 *                 shortId:
 	 *                   type: string
-	 *                   example: abc123
+	 *                   example: _hferty
 	 *       '400':
 	 *         description: Bad request
 	 *         content:
@@ -93,7 +93,7 @@ module.exports = (app) => {
 	 *               properties:
 	 *                 clicks:
 	 *                   type: integer
-	 *                   example: 123
+	 *                   example: 12
 	 *       400:
 	 *         description: Bad request
 	 *         content:

@@ -22,13 +22,13 @@ module.exports = (app) => {
 	 *             properties:
 	 *               name:
 	 *                 type: string
-	 *                 example: John Doe
+	 *                 example: Ashwani Kumar Kushwaha
 	 *               email:
 	 *                 type: string
-	 *                 example: johndoe@example.com
+	 *                 example: ashwani@gmail.com
 	 *               password:
 	 *                 type: string
-	 *                 example: Password123
+	 *                 example: 1234
 	 *     responses:
 	 *       200:
 	 *         description: User registered successfully
@@ -77,10 +77,10 @@ module.exports = (app) => {
 	 *             properties:
 	 *               email:
 	 *                 type: string
-	 *                 example: johndoe@example.com
+	 *                 example: ashwani@gmail.com
 	 *               password:
 	 *                 type: string
-	 *                 example: Password123
+	 *                 example: 1234
 	 *     responses:
 	 *       200:
 	 *         description: Login Success
