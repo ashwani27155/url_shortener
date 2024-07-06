@@ -16,3 +16,7 @@ Inside routes folder we define API routes by using this routes we can access any
 All configuration related stubs are goes inside config folder like database configuration, server configuration and swagger configuration.
 
 I have also configure Swagger API docs for API documentation the API url for accessing the Swagger API docs is "/api-docs".
+
+Test Account :-
+email :- test@gmail.com
+password :- Test@123
