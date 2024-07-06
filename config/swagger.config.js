@@ -12,7 +12,7 @@ const swaggerOptions = {
 		},
 		servers: [
 			{
-				url: "http://localhost:8081",
+				url: "https://url-shortner-kii5.onrender.com",
 			},
 		],
 		components: {
